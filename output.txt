@@ -1,0 +1,62 @@
+(ClassPart,ValuePart,LineNumber)
+<*********><*********><**********>
+{float_const ,1234567734.32 ,1 }
+{dot ,. ,1 }
+{float_const ,43. ,1 }
+{ID ,A43B ,1 }
+{invalid ,.45D ,1 }
+{ID ,voidnssd ,2 }
+{ID ,e ,2 }
+{: ,: ,2 }
+{ID ,void ,2 }
+{ID ,main ,2 }
+{ID ,class ,2 }
+{DT ,int ,3 }
+{, ,, ,3 }
+{dot ,. ,3 }
+{) ,) ,3 }
+{Relational Operator ,< ,4 }
+{invalid ,$ ,4 }
+{ID ,je ,4 }
+{float_const ,123.4 ,8 }
+{float_const ,0.3 ,9 }
+{invalid ,23.5a ,10 }
+{char-const ,'c' ,11 }
+{AM ,+ ,11 }
+{invalid-ch ,'\\n ,11 }
+{invalid-ch ,'\n' ,11 }
+{Compound Operator ,+= ,11 }
+{invalid-ch ,'Zz ,11 }
+{ID ,x ,11 }
+{String-const ,"wjewjwejwejwejw +=32\\" ,12 }
+{Compound Operator ,+= ,12 }
+{invalid ,"ass\" ,12 }
+{ID ,cvcv ,12 }
+{invalid ,"sasas ,13 }
+{invalid ,_dnsds ,14 }
+{{ ,{ ,15 }
+{} ,} ,16 }
+{} ,} ,17 }
+{ID ,bbbbbbbb ,18 }
+{invalid ,99.99ty ,19 }
+{DT ,int ,20 }
+{ID ,a ,20 }
+{Assignment Operator ,= ,20 }
+{int_const ,5 ,20 }
+{; ,; ,20 }
+{ID ,wrryyyyyyyyhnkkk ,21 }
+{Relational Operator ,<= ,22 }
+{Relational Operator ,>= ,22 }
+{Relational Operator ,!= ,23 }
+{MDM ,% ,24 }
+{AM ,+ ,24 }
+{AM ,- ,24 }
+{MDM ,/ ,24 }
+{Assignment Operator ,= ,24 }
+{Compound Operator ,*= ,24 }
+{ID ,void ,24 }
+{: ,: ,24 }
+{; ,; ,24 }
+{Relational Operator ,!= ,24 }
+{Relational Operator ,<= ,24 }
+{ID ,DDJ ,27 }
