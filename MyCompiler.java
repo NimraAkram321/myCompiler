@@ -17,11 +17,13 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
 /**
  *
  * @author HP
  */
 public class MyCompiler extends tokens{
+    
     //Using arraylist for Printing the output
     static ArrayList<tokens> tokens=new ArrayList<>();
     static int d=0;//for index in out line
@@ -38,8 +40,8 @@ public class MyCompiler extends tokens{
         String strLine;
         //checking for end of the line after null it will increment by 1
         while((strLine=br.readLine())!=null){
-            System.out.println("Length of the line :");
-            System.out.println(strLine.length());
+          //  System.out.println("Length of the line :");
+          //  System.out.println(strLine.length());
             
              //creating an object for validation
             validationClass value=new validationClass();
@@ -54,7 +56,7 @@ public class MyCompiler extends tokens{
                 temp=String.valueOf(strLine.charAt(d));    // we have a problem with our int-cnst as it wound not  check for the int to  be on our first line 
                 if (value.Validate_Unsign(temp)) {
                         tokens id = new tokens("int-const", temp, lineNum);
-                        System.out.println("this is for int const on first line ");
+            //            System.out.println("this is for int const on first line ");
                         tokens.add(id);
                         
 
@@ -63,7 +65,7 @@ public class MyCompiler extends tokens{
                  if(strLine.charAt(0)=='}'){ //when only this occurs in a line.
                   
                 tokens pun = new tokens("}", "}", lineNum); //as } is creating issue
-                     System.out.println("this is for curly braket close");
+              //       System.out.println("this is for curly braket close");
                     tokens.add(pun);
               }
                 break;
@@ -73,11 +75,11 @@ public class MyCompiler extends tokens{
                 //temp will contain the splitword after every breaker 
                 //point in the line
                 temp=splitwords(strLine);
-                System.out.println("temp="+temp);
+                //System.out.println("temp="+temp);
                 
                 //check if its empty
                 if(temp.isEmpty()){
-                    System.out.println("temp is empty");
+                  //  System.out.println("temp is empty");
                 }
                 //check for comments
                 else if(temp.contains("?-")){
@@ -95,7 +97,7 @@ public class MyCompiler extends tokens{
                         }
                     }
                     d=strLine.length()-1;
-                    System.out.println("comment:"+ comment);
+                    //System.out.println("comment:"+ comment);
                     
                 }
                 else if(temp.equals(".")){//if temp contain a "."
@@ -149,6 +151,8 @@ public class MyCompiler extends tokens{
             d=0; // after every new line d again becomes 0
             
         }
+        tokens endOfCode = new tokens("$", "$", lineNum);   //it represents the end of code
+        tokens.add(endOfCode);
         // file that we will output, seting the path 
         File Fout=new File("output.txt");
         FileOutputStream fos=new FileOutputStream(Fout);
@@ -161,7 +165,15 @@ public class MyCompiler extends tokens{
                bw.write("{"+tokens.get(i).CP+ " ," +tokens.get(i).VP+ " ,"+(tokens.get(i).line+1)+" }");
                bw.newLine();
            }
+        System.out.println("``````````````````````ERRORs`````````````````````````````");
+         
+            
         bw.close();
+        Syntax syn=new Syntax(tokens);
+        
+        syn.validate();
+        
+        
     }
     // Function of SplitWords
     public static String splitwords(String st) throws IOException{
@@ -281,7 +293,7 @@ public class MyCompiler extends tokens{
                     comment += st.charAt(i);
 
                 }
-                System.out.println("Single Line Comments: " + comment);
+        //        System.out.println("Single Line Comments: " + comment);
             }
             
             else if(Val.Validate_Unsign(String.valueOf(st.charAt(i)))){
@@ -293,6 +305,7 @@ public class MyCompiler extends tokens{
                     FltChk = true;
                     //    if(val.Validate_Int(String.valueOf(st.charAt(i+1)))){
                     temp += st.charAt(i);
+                    
                     // }
                 } 
                  else if(Val.Validate_flaot(temp)){
@@ -320,7 +333,7 @@ public class MyCompiler extends tokens{
 
                 }
                  else if(temp.isEmpty()){
-                    System.out.println("++++"+st.charAt(i+1));
+                    //System.out.println("++++"+st.charAt(i+1));
                      // temp += st.charAt(i);
                       tokens dot = new tokens("dot", ".", lineNum);
                       tokens.add(dot);
@@ -453,7 +466,7 @@ public class MyCompiler extends tokens{
                          return temp;
                      }*/
                   
-                     tokens.add(new tokens("String-const", temp, lineNum));
+                     tokens.add(new tokens("String_const", temp, lineNum));
                      temp = "";
                   }
                
@@ -476,7 +489,7 @@ public class MyCompiler extends tokens{
 
         }
           d = st.length() - 1;
-        System.out.println("==>d" + d);
+      //  System.out.println("==>d" + d);
    
         return temp;
         
@@ -488,7 +501,7 @@ public class MyCompiler extends tokens{
             case 0:
                 return "DT";
             case 1:
-                return "String";
+                return "DT";
             case 2:
                 return "for";
             case 3:
@@ -510,9 +523,21 @@ public class MyCompiler extends tokens{
             case 11:
                 return "new";
             case 12:
-                return "bool_const";
+                return "boolean_const";
             case 13:
                 return "enum";
+            case 14:
+                return "void";    
+            case 15:
+                return "main"; 
+            case 16:
+                return "final";
+            case 17:
+                return "abstract";
+            case 18:
+                return "static";    
+            case 19:
+                return "class";
             default:
                 System.out.println("none");
                         
